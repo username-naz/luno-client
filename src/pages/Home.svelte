@@ -53,14 +53,18 @@
   >
 </div>
 
-<button
-  on:click={() => {
-    socket.emit("create-game");
-    setTimeout(() => {
-      navigate("/game");
-    }, 1000);
-  }}>Start Game</button
->
+{#if $data}
+  {#if $data.environment.host.id === $socketS.id || $data.environment.status === 1}
+    <button
+      on:click={() => {
+        socket.emit("create-game");
+        setTimeout(() => {
+          navigate("/game");
+        }, 1000);
+      }}>Start Game</button
+    >
+  {/if}
+{/if}
 {#if $data}
   <div>
     <h3>Players Connected</h3>

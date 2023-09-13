@@ -1,5 +1,8 @@
 <script lang="ts">
+  import { socket } from "../stores/session";
   export let queue;
+  let audio = new Audio("/ping.mp3");
+  $: if (queue.players[queue.turn].id == $socket.id) audio.play();
 </script>
 
 <div class="container">
