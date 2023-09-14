@@ -33,6 +33,13 @@
   </div>
 {/if}
 
+<button
+  class="luno"
+  on:click={() => {
+    $socket.emit("call-luno");
+  }}>Call Luno!</button
+>
+
 <style>
   img {
     height: 5rem;
@@ -47,5 +54,11 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+
+  .luno {
+    position: fixed;
+    top: 10%;
+    right: 5%;
   }
 </style>

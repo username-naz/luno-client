@@ -52,20 +52,19 @@
     }}>Register</button
   >
 </div>
-
 {#if $data}
-  {#if $data.environment.host.id === $socketS.id || $data.environment.status === 1}
-    <button
-      on:click={() => {
-        socket.emit("create-game");
-        setTimeout(() => {
-          navigate("/game");
-        }, 1000);
-      }}>Start Game</button
-    >
-  {/if}
-{/if}
-{#if $data}
+  <button
+    disabled={!(
+      $data.environment.host?.id === $socketS.id ||
+      $data.environment.status === 1
+    )}
+    on:click={() => {
+      socket.emit("create-game");
+      setTimeout(() => {
+        navigate("/game");
+      }, 1000);
+    }}>Start Game</button
+  >
   <div>
     <h3>Players Connected</h3>
     {#each $data.connections as connection, index}
